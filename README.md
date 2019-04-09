@@ -71,7 +71,7 @@ Now you should be able to login to the cluster using your Alan identity file.
 you@local:~ $ ssh -i .ssh/id_rsa.alan you@alan.calc.priv
 ```
 
-To prevent you from having to type the `-i` flag, you could add the following to `.ssh/config`.
+To prevent you from having to type the `-i` flag every time you log in, you can simply add the following to `.ssh/config`.
 
 ```ssh
 Host alan
