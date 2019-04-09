@@ -59,8 +59,24 @@ you@local:~ $ ll .ssh
 -rw-r--r-- 1 you you  393 Apr 29  2018 id_rsa.pub
 ```
 
+Finally, copy the identify file to Alan.
+
 ```console
 you@local:~ $ ssh-copy-id -i .ssh/id_rsa.alan you@alan.calc.priv
+```
+
+Now you should be able to login to the cluster using your Alan identity file.
+
+```console
+you@local:~ $ ssh -i .ssh/id_rsa.alan you@alan.calc.priv
+```
+
+To prevent you from having to type the `-i` flag, you could add the following to `.ssh/config`.
+
+```ssh
+Host alan
+  HostName alan.calc.priv
+  IdentityFile ~/.ssh/id_rsa.alan
 ```
 
 ### Transferring datasets
@@ -92,6 +108,16 @@ you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh jhermans@alan.cal
 you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
 ```
+
+### Preparing your Deep Learning environment
+
+#### PyTorch
+
+TODO
+
+#### TensorFlow
+
+TODO
 
 ## Tutorials
 
