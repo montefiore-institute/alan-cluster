@@ -14,6 +14,8 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 ## User account setup
 
+If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
+
 ### Generation of SSH keys
 
 ### Transferring datasets
@@ -25,17 +27,15 @@ you@alan-master:~ $ mkdir Datasets
 you@alan-master:~ $ cd Datasets
 ```
 
-#### NFS
+#### SSH
 
 ```console
-you@alan-master:~/Datasets $ mount -t nfs alan.calc.priv:/home/you /local_mount_point
+you@local:~ $ ...
 ```
-
-#### SSH
 
 ### Preparing an Anaconda environment
 
-> **This installs a Python 3 environment**
+> **This installs a Python 3 environment by default**
 
 ```console
 you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
