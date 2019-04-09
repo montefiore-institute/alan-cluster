@@ -18,8 +18,8 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 In general there are two options to transfer your dataset from a remote location to the cluster. One option is to rely on [NFS](#NFS) directly, while the other transfers your dataset over an [SSH](#SSH) connection. There is no preferred option. Both are equally suitable. However, if you are dealing with privacy-sensitive data we recommend to rely on SSH as the NFS transfers are not encrypted.
 
-```bash
-mkdir Datasets
+```console
+you@alan-master:~$ mkdir Datasets
 ```
 
 #### NFS
