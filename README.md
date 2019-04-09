@@ -29,15 +29,19 @@ you@alan-master:~ $ cd datasets
 
 Next, the transfer is initiated using `scp`:
 
-> **Note**: the `v` flag shows the progress bar.
+```console
+you@local:~ $ scp -r my_amazing_dataset alan.calc.priv:~/datasets/
+```
+
+Alternativly, one can rely on `rsync`:
 
 ```console
-you@local:~ $ scp -vr my_amazing_dataset/ alan.calc.priv:~/datasets/
+you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh jhermans@alan.calc.priv:~/datasets/
 ```
 
 ### Preparing an Anaconda environment
 
-> **This installs a Python 3 environment by default**
+> **Recommended**. **This installs a Python 3 environment by default.**
 
 ```console
 you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -46,4 +50,4 @@ you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
 
 ## Tutorials
 
-1. [Hello World](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials/01-hello-world)
+1. [Hello world](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials/01-hello-world)
