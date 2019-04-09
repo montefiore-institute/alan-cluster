@@ -35,6 +35,13 @@ you@alan-master:~/Datasets $ mount -t nfs alan.calc.priv:/home/you /local_mount_
 
 ### Preparing an Anaconda environment
 
+> **This installs a Python 3 environment**
+
+```console
+you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
+```
+
 ## Tutorials
 
 1. [Hello World](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials/01-hello-world)
