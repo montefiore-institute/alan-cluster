@@ -28,4 +28,4 @@ you@alan-master:~$ mkdir Datasets
 
 ### Preparing an Anaconda environment
 
-## Submitting jobs
+## Tutorials
