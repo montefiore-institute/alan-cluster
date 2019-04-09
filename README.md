@@ -97,7 +97,7 @@ you@local:~ $ scp -r my_amazing_dataset alan.calc.priv:~/datasets/
 Alternativly, one can rely on `rsync`:
 
 ```console
-you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh jhermans@alan.calc.priv:~/datasets/
+you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@alan.calc.priv:~/datasets/
 ```
 
 ### Preparing an Anaconda environment
