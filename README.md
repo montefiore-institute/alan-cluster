@@ -12,6 +12,14 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 ## Cluster-wide datasets
 
+At the moment we provide the following cluster-wide, read-only datasets which are accessible at `/data/datasets`:
+
+```console
+admin@alan-master:~ $ ll /data/datasets
+```
+
+If you would like to propose a new cluster-wide dataset, feel free to [submit a proposal](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO).
+
 ## User account setup
 
 If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
