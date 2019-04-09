@@ -24,7 +24,44 @@ If you would like to propose a new cluster-wide dataset, feel free to [submit a 
 
 If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
 
-### Generation of SSH keys
+### SSH keys
+
+Once you have been provided with your account details by e-mail, we *strongly recommend* to authenticate your access to Alan using SSH keys. Such a key can be generated on your local machine:
+
+```console
+you@local:~ $ ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/you/.ssh/id_rsa): /home/you/.ssh/id_rsa.alan
+Enter passphrase (empty for no passphrase): ************
+SHA256:b0uJjgkigIbzdli+EiuZ88hvq6REvGThht8EF9SVC+o you@local
+The key's randomart image is:
++---[RSA 4096]----+
+|   .o. ...       |
+|     .o .        |
+| .. .. . .       |
+|* .o.   .        |
+|*O .o   S        |
+|B+o*E    o .     |
+|.**o=   . =      |
+|X+o+ o + o .     |
+|o*=+o o . .      |
++----[SHA256]-----+
+```
+
+At this point your public and private keypair should be present in `/home/you/.ssh`:
+
+```console
+you@local:~ $ ll .ssh
+-rw-r--r-- 1 you you  60 Jan  7 21:53 config
+-rw------- 1 you you  1.7K Apr 29  2018 id_rsa
+-rw------- 1 you you  3.4K Apr  9 12:39 id_rsa.alan
+-rw-r--r-- 1 you you  737 Apr  9 12:39 id_rsa.alan.pub
+-rw-r--r-- 1 you you  393 Apr 29  2018 id_rsa.pub
+```
+
+```console
+you@local:~ $ ssh-copy-id -i .ssh/id_rsa.alan you@alan.calc.priv
+```
 
 ### Transferring datasets
 
