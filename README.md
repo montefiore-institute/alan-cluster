@@ -2,7 +2,7 @@
 
 Documentation and guidelines for the Alan GPU cluster at the University of Liège.
 
-**We assume you have access to the private network of the university.**
+**The documentation assumes you have access to the private network of the university.**
 
 ## General actions
 
