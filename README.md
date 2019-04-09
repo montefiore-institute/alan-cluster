@@ -88,7 +88,7 @@ you@alan-master:~ $ mkdir datasets
 you@alan-master:~ $ cd datasets
 ```
 
-Next, the transfer is initiated using `scp`:
+Next, the transfer is initiated using `scp` from the machine storing the data (e.g., your desktop computer) to the cluster:
 
 ```console
 you@local:~ $ scp -r my_amazing_dataset alan.calc.priv:~/datasets/
