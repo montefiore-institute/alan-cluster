@@ -20,17 +20,19 @@ If you do not have an account, please submit [this](https://github.com/montefior
 
 ### Transferring datasets
 
-In general there are two options to transfer your dataset from a remote location to the cluster. One option is to rely on [NFS](#NFS) directly, while the other transfers your dataset over an [SSH](#SSH) connection. There is no preferred option, both are equally suitable. However, if you are dealing with sensitive data we recommend to rely on SSH as NFS transfers are not encrypted.
+This section shows you how to transfer your datasets to the GPU cluster. It is a good practice to centralize your datasets in a common folder:
 
 ```console
-you@alan-master:~ $ mkdir Datasets
-you@alan-master:~ $ cd Datasets
+you@alan-master:~ $ mkdir datasets
+you@alan-master:~ $ cd datasets
 ```
 
-#### SSH
+Next, the transfer is initiated using `scp`:
+
+> **Note**: the `v` flag shows the progress bar.
 
 ```console
-you@local:~ $ ...
+you@local:~ $ scp -vr my_amazing_dataset/ alan.calc.priv:~/datasets/
 ```
 
 ### Preparing an Anaconda environment
