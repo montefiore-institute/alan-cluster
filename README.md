@@ -4,6 +4,12 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 **The documentation assumes you have access to the private network of the university.**
 
+- [General actions](#general-actions)
+- [Cluster-wide datasets](#cluster-wide-datasets)
+- [Account setup](#user-account-setup)
+- [Cluster usage](#cluster-usage)
+ - [Useful slurm commands](#useful-slurm-commands)
+
 ## General actions
 
 - [Account registration](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO)
@@ -118,6 +124,15 @@ TODO
 #### TensorFlow
 
 TODO
+
+## Cluster usage
+
+### Useful `slurm` commands
+
+Displaying jobs currently in the queue (whatever the user) and their associated metadata (memory, time, number of gpus,...):
+```
+squeue -O "jobid:.10,partition:.10,name:.20,username:.14,state:.8,tres-per-node:.14,numtasks:.7,minmemory:.11,timeused:.13,timelimit:.13,reasonlist:.20,prioritylong:.20,submittime:.22,nice:.5"
+```
 
 ## Tutorials
 
