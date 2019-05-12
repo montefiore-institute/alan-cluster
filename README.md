@@ -59,7 +59,7 @@ you@local:~ $ ll .ssh
 -rw-r--r-- 1 you you  393 Apr 29  2018 id_rsa.pub
 ```
 
-Finally, copy the identify file to Alan.
+Finally, copy the identity file to Alan.
 
 ```console
 you@local:~ $ ssh-copy-id -i .ssh/id_rsa.alan you@alan.calc.priv
@@ -88,13 +88,13 @@ you@alan-master:~ $ mkdir datasets
 you@alan-master:~ $ cd datasets
 ```
 
-Next, the transfer is initiated using `scp`:
+Next, the transfer is initiated using `scp` from the machine storing the data (e.g., your desktop computer) to the cluster:
 
 ```console
 you@local:~ $ scp -r my_amazing_dataset alan.calc.priv:~/datasets/
 ```
 
-Alternativly, one can rely on `rsync`:
+Alternatively, one can rely on `rsync`:
 
 ```console
 you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@alan.calc.priv:~/datasets/
