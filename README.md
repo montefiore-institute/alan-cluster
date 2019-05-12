@@ -1,4 +1,4 @@
-# Alan
+![](https://github.com/montefiore-ai/alan-cluster/blob/master/.github/alan-header.png?raw=true)
 
 Documentation and guidelines for the Alan GPU cluster at the University of Liège.
 
