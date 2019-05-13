@@ -4,6 +4,12 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 **The documentation assumes you have access to the private network of the university.**
 
+- [General actions](#general-actions)
+- [Cluster-wide datasets](#cluster-wide-datasets)
+- [Account setup](#user-account-setup)
+- [Cluster usage](#cluster-usage)
+ - [Useful slurm commands](#useful-slurm-commands)
+
 ## General actions
 
 - [Account registration](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO)
@@ -118,6 +124,20 @@ TODO
 #### TensorFlow
 
 TODO
+
+## Cluster usage
+
+CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html).
+
+### Useful `slurm` commands
+
+- [`sbatch`](https://slurm.schedmd.com/sbatch.html): submitting a job to the cluster
+ - for reserving gpu(s) use: `--gres=gpu:N_GPUS`
+- [`scancel`](https://slurm.schedmd.com/scancel.html): cancelling queued or running jobs
+- [`srun`](https://slurm.schedmd.com/srun.html): launching a job step
+- [`squeue`](https://slurm.schedmd.com/squeue.html): displaying jobs currently in the queue and their associated metadata
+- [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs)
+- [`sinfo`](https://slurm.schedmd.com/sinfo.html): getting information about the cluster and its nodes
 
 ## Tutorials
 
