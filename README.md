@@ -130,10 +130,10 @@ TODO
 
 The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan. 
 
-### Main `slurm` commands
+### Slurm commands
 
 - [`sbatch`](https://slurm.schedmd.com/sbatch.html): submit a job to the cluster
- - for reserving gpu(s) use: `--gres=gpu:N_GPUS`
+  - for reserving gpu(s) use: `--gres=gpu:N_GPUS`
 - [`scancel`](https://slurm.schedmd.com/scancel.html): cancel queued or running jobs
 - [`srun`](https://slurm.schedmd.com/srun.html): launch a job step
 - [`squeue`](https://slurm.schedmd.com/squeue.html): display jobs currently in the queue and their associated metadata
