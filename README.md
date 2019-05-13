@@ -4,7 +4,7 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 **The documentation assumes you have access to the private network of the university.**
 
-## Table of content
+## Table of contents
 
 - [General actions](#general-actions)
 - [Cluster-wide datasets](#cluster-wide-datasets)
