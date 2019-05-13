@@ -4,11 +4,12 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 **The documentation assumes you have access to the private network of the university.**
 
+## Table of content
+
 - [General actions](#general-actions)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 - [Account setup](#user-account-setup)
 - [Cluster usage](#cluster-usage)
- - [Useful slurm commands](#useful-slurm-commands)
 
 ## General actions
 
@@ -127,17 +128,17 @@ TODO
 
 ## Cluster usage
 
-CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html).
+The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan. 
 
-### Useful `slurm` commands
+### Main `slurm` commands
 
-- [`sbatch`](https://slurm.schedmd.com/sbatch.html): submitting a job to the cluster
+- [`sbatch`](https://slurm.schedmd.com/sbatch.html): submit a job to the cluster
  - for reserving gpu(s) use: `--gres=gpu:N_GPUS`
-- [`scancel`](https://slurm.schedmd.com/scancel.html): cancelling queued or running jobs
-- [`srun`](https://slurm.schedmd.com/srun.html): launching a job step
-- [`squeue`](https://slurm.schedmd.com/squeue.html): displaying jobs currently in the queue and their associated metadata
+- [`scancel`](https://slurm.schedmd.com/scancel.html): cancel queued or running jobs
+- [`srun`](https://slurm.schedmd.com/srun.html): launch a job step
+- [`squeue`](https://slurm.schedmd.com/squeue.html): display jobs currently in the queue and their associated metadata
 - [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs)
-- [`sinfo`](https://slurm.schedmd.com/sinfo.html): getting information about the cluster and its nodes
+- [`sinfo`](https://slurm.schedmd.com/sinfo.html): get information about the cluster and its nodes
 
 ## Tutorials
 
