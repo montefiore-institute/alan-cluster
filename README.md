@@ -127,12 +127,17 @@ TODO
 
 ## Cluster usage
 
+CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html).
+
 ### Useful `slurm` commands
 
-Displaying jobs currently in the queue (whatever the user) and their associated metadata (memory, time, number of gpus,...):
-```
-squeue -O "jobid:.10,partition:.10,name:.20,username:.14,state:.8,tres-per-node:.14,numtasks:.7,minmemory:.11,timeused:.13,timelimit:.13,reasonlist:.20,prioritylong:.20,submittime:.22,nice:.5"
-```
+- [`sbatch`](https://slurm.schedmd.com/sbatch.html): submitting a job to the cluster
+ - for reserving gpu(s) use: `--gres=gpu:N_GPUS`
+- [`scancel`](https://slurm.schedmd.com/scancel.html): cancelling queued or running jobs
+- [`srun`](https://slurm.schedmd.com/srun.html): launching a job step
+- [`squeue`](https://slurm.schedmd.com/squeue.html): displaying jobs currently in the queue and their associated metadata
+- [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs)
+- [`sinfo`](https://slurm.schedmd.com/sinfo.html): getting information about the cluster and its nodes
 
 ## Tutorials
 
