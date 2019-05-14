@@ -12,7 +12,10 @@ A clear and concise description of the problem, or is the access related to a co
 *Until*: not defined.
 
 **Supervisor**
-List your supervisor here.
+Add your supervisor here.
+
+**Institutional email**
+Add your institutional email (user.name@uliege.be).
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
