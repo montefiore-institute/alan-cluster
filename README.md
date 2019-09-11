@@ -8,7 +8,6 @@ Table of contents:
 - [General actions](#general-actions)
 - [Account setup](#user-account-setup)
 - [Cluster usage](#cluster-usage)
-- [Tutorials](#tutorials)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ## General actions
@@ -76,6 +75,26 @@ Host alan
   IdentityFile ~/.ssh/id_rsa.alan
 ```
 
+### Preparing an Anaconda environment
+
+> **Recommended**. **This installs a Python 3 environment by default.**
+
+```console
+you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
+```
+
+### Preparing your Deep Learning environment
+
+#### PyTorch
+
+TODO
+
+#### TensorFlow
+
+TODO
+
+
 ### Transferring datasets
 
 This section shows you how to transfer your datasets to the GPU cluster. It is a good practice to centralize your datasets in a common folder:
@@ -97,25 +116,6 @@ Alternatively, one can rely on `rsync`:
 you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@alan.calc.priv:~/datasets/
 ```
 
-### Preparing an Anaconda environment
-
-> **Recommended**. **This installs a Python 3 environment by default.**
-
-```console
-you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
-```
-
-### Preparing your Deep Learning environment
-
-#### PyTorch
-
-TODO
-
-#### TensorFlow
-
-TODO
-
 ## Cluster usage
 
 The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan. 
@@ -129,10 +129,6 @@ The CECI cluster documentation features a [thorough Slurm guide](https://support
 - [`squeue`](https://slurm.schedmd.com/squeue.html): display jobs currently in the queue and their associated metadata.
 - [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs).
 - [`sinfo`](https://slurm.schedmd.com/sinfo.html): get information about the cluster and its nodes.
-
-## Tutorials
-
-1. [Hello world](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials/01-hello-world)
 
 
 ## Cluster-wide datasets
