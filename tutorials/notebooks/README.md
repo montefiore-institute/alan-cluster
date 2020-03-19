@@ -1,6 +1,6 @@
 # Running a Jupyter instance on Alan
 
-This tutorial will guide you on how to setup your personalized Jupyter instance on the GPU cluster.
+This tutorial will guide you on how to setup your personalized Jupyter instance on the GPU cluster. This document assumes you have an Anaconda environment configured with Jupyter Lab.
 
 ## Securing the notebook server
 
