@@ -6,6 +6,8 @@ you@alan-master:~ $ conda activate myenvironment
 you@alan-master:~ $ conda install jupyterlab
 ```
 
+**Attention:** This document only provides a setup to use Jupyter *interactively*. If you simply would like to execute notebooks to summarize results, please have a look at [Papermill](https://github.com/nteract/papermill).
+
 ## Securing the notebook server
 
 A first prerequisite is the notebook configuration file and can be generated as follows:
