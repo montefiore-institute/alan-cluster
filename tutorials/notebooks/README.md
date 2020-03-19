@@ -1,6 +1,10 @@
 # Running a Jupyter instance on Alan
 
 This tutorial will guide you on how to setup your personalized Jupyter instance on the GPU cluster. This document assumes you have an Anaconda environment configured with Jupyter Lab.
+```console
+you@alan-master:~ $ conda activate myenvironment
+you@alan-master:~ $ conda install jupyterlab
+```
 
 ## Securing the notebook server
 
