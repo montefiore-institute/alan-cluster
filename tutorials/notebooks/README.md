@@ -39,9 +39,13 @@ The resource allocation of your server can be controlled by changing the paramet
 #
 
 # Activate the Anaconda environment in which to execute the Jupyter instance.
-conda activate default
+conda activate default # CHANGEME
 ```
-Please make sure you change the Anaconda environment in the submission file. Currently it is set to `default` as shown above.
+Please make sure you change the Anaconda environment in the submission file. By default is set to `default`. After your resources have been properly configured, the Jupyter instance is ready to be scheduled by Slurm:
+```console
+you@alan-master:~ $ sbatch jupyter.sbatch
+Submitted batch job 1333969
+```
 
 ## Accessing the Juypter server
 After the Jupyter instance has been scheduled by Slurm, i.e., it is in a running state:

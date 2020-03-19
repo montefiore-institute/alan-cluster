@@ -12,6 +12,7 @@
 #
 
 # Activate the Anaconda environment in which to execute the Jupyter instance.
-conda activate default
+conda init bash
+conda activate default # CHANGEME
 
 jupyter lab --ip='*'
