@@ -36,7 +36,7 @@ The resource allocation of your server can be controlled by changing the paramet
 #SBATCH --cpus-per-task=1        # Number of CPU cores to allocate
 #SBATCH --export=ALL
 #SBATCH --job-name "JUPYTER"
-#SBATCH --mem-per-cpu=4000       # Allocated memory in MB per allocated CPU cores
+#SBATCH --mem-per-cpu=4000       # Memory to allocate in MB per allocated CPU core
 #SBATCH --output "jupyter.log"   # Log-file (important!)
 #SBATCH --gres=gpu:0             # Number of GPU's
 #SBATCH --time="7-00:00:00"      # Max execution time
@@ -58,9 +58,10 @@ you@alan-master:~ $ squeue | grep you | grep JUPYTER
 ```
 The IP address and port allocated to your Jupyter instance can be extracted from the log file, as specified above.
 ```console
-you@alan-master:~ $ cat jupyter.log | grep ...
+you@alan-master:~ $ cat jupyter.log | grep alan-compute
+[I 17:00:28.508 LabApp] http://alan-compute-05:8888/
 ```
-The address in conjunction with the ealier defined password can be used to access the Jupyter instance. Assuming you are connected to the ULG internal network (e.g., through the VPN or some other service).
+The address in conjunction with the ealier defined password can be used to access the Jupyter instance through your browser. Assuming you are connected to the ULG internal network (e.g., through the VPN or some other service). The server can be terminated through the browser or via the `scancel` command.
 
 ## Advanced options
 Additional information on the configuration of your notebook server can be found [here](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html).
