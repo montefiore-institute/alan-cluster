@@ -5,20 +5,24 @@ This tutorial will guide you on how to setup your personalized Jupyter instance 
 ## Securing the notebook server
 
 A first prerequisite is the notebook configuration file and can be generated as follows:
-```bash
-jupyter notebook --generate-config
+```console
+you@alan-master:~ $ jupyter notebook --generate-config
 ```
 This operation will write a new default config to your home directory.
 
 Since the notebook server will be allocated on a compute node by Slurm, and is publicly available to everyone on the internal ULG network, it is good practice to secure your instance with a password.
-```bash
-jupyter notebook password
+```console
+you@alan-master:~ $ jupyter notebook password
 Enter password:  ****
 Verify password: ****
 ```
 You will only have to execute this once, as the password will be shared across all the Juypter servers you will allocate.
 
 ## Resource allocation
+The default Slurm submission script can be obtained by:
+```console
+you@alan-master:~ $ wget https://raw.githubusercontent.com/montefiore-ai/alan-cluster/master/tutorials/notebooks/jupyter.sbatch
+```
 The resource allocation of your server can be controlled by changing the parameters in `jupyter.sbatch` and can be found at the top of the submission file.
 ```bash
 #!/usr/bin/env bash
@@ -41,12 +45,12 @@ Please make sure you change the Anaconda environment in the submission file. Cur
 
 ## Accessing the Juypter server
 After the Jupyter instance has been scheduled by Slurm, i.e., it is in a running state:
-```bash
-TODO
+```console
+you@alan-master:~ $ squeue | grep you | grep JUPYTER
 ```
 The IP address and port allocated to your Jupyter instance can be extracted from the log file, as specified above.
-```bash
-TODO
+```console
+you@alan-master:~ $ cat jupyter.log | grep ...
 ```
 The address in conjunction with the ealier defined password can be used to access the Jupyter instance. Assuming you are connected to the ULG internal network (e.g., through the VPN or some other service).
 
