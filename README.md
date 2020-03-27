@@ -156,7 +156,7 @@ You can use the folder defined in `$JOBSCRATCH` for the entirety of your job. It
 cp -r /home/you/datasets/my_dataset $JOBSCRATCH
 ```
 
-**Attention**: Do not forget to actually load the data from $JOBSCRATCH.
+**Attention**: Do not forget to actually load the data from `$JOBSCRATCH`.
 
 ##### Transfer your dataset to the SSD's on the compute nodes
 
