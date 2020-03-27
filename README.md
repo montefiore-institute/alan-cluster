@@ -96,7 +96,7 @@ you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorc
 
 #### TensorFlow
 
-**Attention**: Install `tensorflow-gpu`!
+**Attention**: Install `tensorflow-gpu`! The same hold for `keras-gpu`.
 
 ```console
 you@alan-master:~ $ conda install tensorflow-gpu
@@ -137,6 +137,34 @@ The CECI cluster documentation features a [thorough Slurm guide](https://support
 - [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs).
 - [`sinfo`](https://slurm.schedmd.com/sinfo.html): get information about the cluster and its nodes.
 
+### Recommended ways to load data into the GPU
+
+It is generally not recommended to load small batches from the main storage disk because most of Deep Learning requires (small) random batches. This translates into a lot of random IO operations on the main storage *hard disks* of the cluster. Which in turn degrades the performance. We recommend the following ways to load data into the GPU:
+
+#### My dataset does not fit in memory
+
+We configured the Cluster to allocate user-directories on the local SSD's of the compute nodes. These are perfectly capable to handle many concurrent random IO operations.
+
+The following environment variables are available to your Slurm submission script:
+- `$LOCALSCRATCH` points to `/scratch/$USERNAME`
+- `$JOBSCRATCH` points to `/scratch/$USERNAME/$SLURM_JOB_ID`
+
+##### Use the preallocated space on a per-job basis
+You can use the folder defined in `$JOBSCRATCH` for the entirety of your job. It will be cleaned up automatically after your job has been completed. If your dataset is sufficiently small (say < 50GB) we recommend to use this option. For a 50GB dataset we expect a transfer time of about 1 minute. This option can be used by adding the following line to your Slurm submission script:
+
+```bash
+cp -r /home/you/datasets/my_dataset $JOBSCRATCH
+```
+
+##### Transfer your dataset to the SSD's on the compute nodes
+
+A bottleneck in the approach above is obviously the transfer time to the compute node. This can be resolved by manually transferring the dataset to your scratch-directory on one or several compute nodes. Afterwards, you can add `--nodelist=alan-compute-xx` to your `sbatch` arguments. This will instruct Slurm to allocate the job on `alan-compute-xx`.
+
+**Attention**: Do not forget to delete your dataset from the SSD's when you completed a project.
+
+#### My dataset fits in memory
+
+In this case, we recommend to simply read the dataset into memory and load your batches directly from RAM. This will not cause any issues as the data is sequentially read from the main RAID array on the master. This has the desirable effect that the heads of the hard disks do not have to move around constantly for every (random) small batch your are trying to load, thereby not degrading the performance of the main cluster storage.
 
 ## Cluster-wide datasets
 
