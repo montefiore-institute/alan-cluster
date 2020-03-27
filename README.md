@@ -150,7 +150,7 @@ The following environment variables are available to your Slurm submission scrip
 - `$JOBSCRATCH` points to `/scratch/$USERNAME/$SLURM_JOB_ID`
 
 ##### Use the preallocated space on a per-job basis
-You can use the folder defined in `$JOBSCRATCH` for the entirety of your job. It will be cleaned up automatically after your job has been completed. If your dataset is sufficiently small (say < 50GB) we recommend to use this option. For a 50GB dataset we expect a transfer time of about 1 minute. This option can be used by adding the following line to your Slurm submission script:
+You can use the folder defined in `$JOBSCRATCH` for the entirety of your job. It will be cleaned up automatically after your job has been completed. If your dataset is sufficiently small (say < 50GB), we recommend to use this option. For a 50GB dataset we expect a transfer time of about 1 minute. This option can be used by adding the following line to your Slurm submission script:
 
 ```bash
 cp -r /home/you/datasets/my_dataset $JOBSCRATCH
