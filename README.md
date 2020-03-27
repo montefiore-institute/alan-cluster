@@ -96,7 +96,7 @@ you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorc
 
 #### TensorFlow
 
-**Attention**: Install `tensorflow-gpu`! The same hold for `keras-gpu`.
+**Attention**: Install `tensorflow-gpu`! The same holds for `keras-gpu`.
 
 ```console
 you@alan-master:~ $ conda install tensorflow-gpu
