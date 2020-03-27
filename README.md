@@ -91,7 +91,7 @@ The installation of your Deep Learning environment is quite straightforward afte
 #### PyTorch
 
 ```console
-you@alan-master:~ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 ```
 
 #### TensorFlow
@@ -99,7 +99,7 @@ you@alan-master:~ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
 **Attention**: Install `tensorflow-gpu`!
 
 ```console
-you@alan-master:~ conda install tensorflow-gpu
+you@alan-master:~ $ conda install tensorflow-gpu
 ```
 
 ### Transferring datasets
