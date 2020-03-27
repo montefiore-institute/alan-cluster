@@ -84,16 +84,23 @@ you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-L
 you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
 ```
 
-### Preparing your Deep Learning environment
+### Preparing your (Deep Learning) project
+
+The installation of your Deep Learning environment is quite straightforward after Anaconda has been installed. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis. This is generally good practice as it allows for more convenient reproducability of your experiments.
 
 #### PyTorch
 
-TODO
+```console
+you@alan-master:~ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+```
 
 #### TensorFlow
 
-TODO
+**Attention**: Install `tensorflow-gpu`!
 
+```console
+you@alan-master:~ conda install tensorflow-gpu
+```
 
 ### Transferring datasets
 
