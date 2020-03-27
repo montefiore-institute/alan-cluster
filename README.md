@@ -58,16 +58,16 @@ you@local:~ $ ll .ssh
 Finally, copy the identity file to Alan.
 
 ```console
-you@local:~ $ ssh-copy-id -i .ssh/id_rsa.alan you@alan.calc.priv
+you@local:~ $ ssh-copy-id -i ~/.ssh/id_rsa.alan you@alan.calc.priv
 ```
 
 Now you should be able to login to the cluster using your Alan identity file.
 
 ```console
-you@local:~ $ ssh -i .ssh/id_rsa.alan you@alan.calc.priv
+you@local:~ $ ssh -i ~/.ssh/id_rsa.alan you@alan.calc.priv
 ```
 
-To prevent you from having to type the `-i` flag every time you log in, you can simply add the following to `.ssh/config`.
+To prevent you from having to type the `-i` flag every time you log in, you can simply add the following to `~/.ssh/config`.
 
 ```ssh
 Host alan
