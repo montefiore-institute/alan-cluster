@@ -156,6 +156,8 @@ You can use the folder defined in `$JOBSCRATCH` for the entirety of your job. It
 cp -r /home/you/datasets/my_dataset $JOBSCRATCH
 ```
 
+**Attention**: Do not forget to actually load the data from $JOBSCRATCH.
+
 ##### Transfer your dataset to the SSD's on the compute nodes
 
 A bottleneck in the approach above is obviously the transfer time to the compute node. This can be resolved by manually transferring the dataset to your scratch-directory on one or several compute nodes. Afterwards, you can add `--nodelist=alan-compute-xx` to your `sbatch` arguments. This will instruct Slurm to allocate the job on `alan-compute-xx`.
