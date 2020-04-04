@@ -145,18 +145,14 @@ It is generally not recommended to load small batches from the main storage disk
 
 We configured the Cluster to allocate user-directories on the local SSD's of the compute nodes. These are perfectly capable to handle many concurrent random IO operations.
 
-The following environment variables are available to your Slurm submission script:
-- `$LOCALSCRATCH` points to `/scratch/$USERNAME`
-- `$JOBSCRATCH` points to `/scratch/$USERNAME/$SLURM_JOB_ID`
-
 ##### Use the preallocated space on a per-job basis
-You can use the folder defined in `$JOBSCRATCH` for the entirety of your job. It will be cleaned up automatically after your job has been completed. If your dataset is sufficiently small (say < 50GB), we recommend to use this option. For a 50GB dataset we expect a transfer time of about 1 minute. This option can be used by adding the following line to your Slurm submission script:
+You can use the folder defined in `/scratch/$SLURM_JOB_USER/$SLURM_JOB_ID` for the entirety of your job. It will be cleaned up automatically after your job has been completed. If your dataset is sufficiently small (say < 50GB), we recommend to use this option. For a 50GB dataset we expect a transfer time of about 1 minute. This option can be used by adding the following line to your Slurm submission script:
 
 ```bash
-cp -r /home/you/datasets/my_dataset $JOBSCRATCH
+cp -r /home/you/datasets/my_dataset /scratch/$SLURM_JOB_USER/$SLURM_JOB_ID
 ```
 
-**Attention**: Do not forget to actually load the data from `$JOBSCRATCH`.
+**Attention**: Do not forget to actually load the data from `/scratch/$SLURM_JOB_USER/$SLURM_JOB_ID`.
 
 ##### Transfer your dataset to the SSD's on the compute nodes
 
