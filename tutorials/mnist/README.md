@@ -35,7 +35,7 @@ Jobs are scheduled on Alan through Slurm scripts. They specify the resources you
 source activate myenvironment         # CHANGEME
 
 # Run your Python script
-cd /home/glouppe/mnist  # CHANGEME
+cd /home/you/mnist  # CHANGEME
 python mnist.py
 ```
 
