@@ -6,9 +6,24 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 Table of contents:
 - [General actions](#general-actions)
-- [Account setup](#user-account-setup)
+- [User account setup](#user-account-setup)
+  - [Connecting to Alan](#connecting-to-alan)
+  - [SSH keys](#ssh-keys)
+  - [Preparing an Anaconda environment](#preparing-an-anaconda-environment)
+  - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
+    - [PyTorch](#pytorch)
+    - [TensorFlow](#tensorflow)
+  - [Transferring datasets](#transferring-datasets)
 - [Cluster usage](#cluster-usage)
+  - [Slurm commands](#slurm-commands)
+  - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-gpu)
+    - [My dataset does not fit in memory](#my-dataset-does-not-fit-in-memory)
+      - [Use the preallocated space on a per-job basis](#use-the-preallocated-space-on-a-per-job-basis)
+      - [Transfer your dataset to the SSD's on the compute nodes](#transfer-your-dataset-to-the-ssds-on-the-compute-nodes)
+    - [My dataset fits in memory](#my-dataset-fits-in-memory)
 - [Cluster-wide datasets](#cluster-wide-datasets)
+
+---
 
 ## General actions
 
@@ -20,9 +35,17 @@ Table of contents:
 
 If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
 
+### Connecting to Alan
+
+Once you have been provided with your account details by e-mail, you can connect to Alan through SSH:
+
+```console
+you@local:~ $ ssh you@alan.calc.priv
+```
+
 ### SSH keys
 
-Once you have been provided with your account details by e-mail, we *strongly recommend* to authenticate your access to Alan using SSH keys. Such a key can be generated on your local machine:
+We *strongly recommend* to authenticate your access to Alan using SSH keys. Such a key can be generated on your local machine:
 
 ```console
 you@local:~ $ ssh-keygen -t rsa -b 4096
@@ -114,7 +137,7 @@ you@alan-master:~ $ cd datasets
 Next, the transfer is initiated using `scp` from the machine storing the data (e.g., your desktop computer) to the cluster:
 
 ```console
-you@local:~ $ scp -r my_amazing_dataset alan.calc.priv:~/datasets/
+you@local:~ $ scp -r my_amazing_dataset you@alan.calc.priv:~/datasets/
 ```
 
 Alternatively, one can rely on `rsync`:
@@ -126,6 +149,8 @@ you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@alan.calc.pri
 ## Cluster usage
 
 The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan. 
+
+Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials).
 
 ### Slurm commands
 
