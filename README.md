@@ -92,7 +92,7 @@ you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorc
 you@alan-master:~ $ conda install tensorflow-gpu
 ```
 
-### Transferring datasets
+### Transferring your datasets to Alan
 
 This section shows you how to transfer your datasets to the GPU cluster. It is a good practice to centralize your datasets in a common folder:
 
