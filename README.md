@@ -17,7 +17,7 @@ Table of contents:
     - [TensorFlow](#tensorflow)
 - [Cluster usage](#cluster-usage)
   - [Slurm commands](#slurm-commands)
-  - [Queues](#queues)
+  - [Partitions](#partitions)
   - [Filesytems](#filesystems)
   - [Transferring data to the cluster](#transferring-data-to-the-cluster)
 - [Cluster-wide datasets](#cluster-wide-datasets)
@@ -43,7 +43,7 @@ you@local:~ $ ssh you@master.alan.priv
 ```
 After logging in with the password provided by the acceptance e-mail, you will be forced to change the password.
 
-The e-mail will additionally contain a private authenticate key which can be used to connect to the GPU cluster.
+The e-mail will additionally contain a private authentication key which can be used to connect to the GPU cluster.
 The key can be used by manually executing:
 ```console
 you@local:~ $ ssh -i /path/to/privatekey/alan you@master.alan.priv
@@ -128,6 +128,23 @@ Elementary tutorials can also be found in [`/tutorials/`](https://github.com/mon
 - [`squeue`](https://slurm.schedmd.com/squeue.html): display jobs currently in the queue and their associated metadata.
 - [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs).
 - [`sinfo`](https://slurm.schedmd.com/sinfo.html): get information about the cluster and its nodes.
+
+### Partitions
+The cluster provides several queues or job partitions. A specific job partition can be acessed by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. For instance, if you would like to test your script, you can make use of the `debug` partition by specifying `--partition=debug`.
+```console
+root@master:~ sinfo -s
+PARTITION       AVAIL  TIMELIMIT   NODELIST
+all*               up 14-00:00:0   compute-[01-04,06-13]
+debug              up      15:00   compute-05
+1080ti             up 14-00:00:0   compute-[01-04]
+2080ti             up 14-00:00:0   compute-[06-10]
+quadro             up 14-00:00:0   compute-[11-12]
+tesla              up 14-00:00:0   compute-13
+priority-quadro    up 14-00:00:0   compute-[11-12]
+priority-tesla     up 14-00:00:0   compute-13
+```
+
+
 
 ### Recommended ways to load data into the GPU
 
