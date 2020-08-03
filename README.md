@@ -145,8 +145,9 @@ priority-tesla     up 14-00:00:0   compute-13
 ```
 Your priority status can be verified by executing
 ```console
-you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "You have priority permissions" || echo "No priority permissions"
+you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "Allowed" || echo "Not allowed"
 ```
+After verifying you have permissions, you can submit your job using by specifying `--partition=priority-quadro` or `--partition=priority-tesla`. Specifying this option while insufficient permissions will result in a submission failure anyway.
 
 ### Recommended ways to load data into the GPU
 
