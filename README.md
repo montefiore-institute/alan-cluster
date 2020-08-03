@@ -40,62 +40,7 @@ If you do not have an account, please submit [this](https://github.com/montefior
 Once you have been provided with your account details by e-mail, you can connect to Alan through SSH:
 
 ```console
-you@local:~ $ ssh you@alan.calc.priv
-```
-
-### SSH keys
-
-We *strongly recommend* to authenticate your access to Alan using SSH keys. Such a key can be generated on your local machine:
-
-```console
-you@local:~ $ ssh-keygen -t rsa -b 4096
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/you/.ssh/id_rsa): /home/you/.ssh/id_rsa.alan
-Enter passphrase (empty for no passphrase): ************
-SHA256:b0uJjgkigIbzdli+EiuZ88hvq6REvGThht8EF9SVC+o you@local
-The key's randomart image is:
-+---[RSA 4096]----+
-|   .o. ...       |
-|     .o .        |
-| .. .. . .       |
-|* .o.   .        |
-|*O .o   S        |
-|B+o*E    o .     |
-|.**o=   . =      |
-|X+o+ o + o .     |
-|o*=+o o . .      |
-+----[SHA256]-----+
-```
-
-At this point your public and private keypair should be present in `/home/you/.ssh`:
-
-```console
-you@local:~ $ ll .ssh
--rw-r--r-- 1 you you  60 Jan  7 21:53 config
--rw------- 1 you you  1.7K Apr 29  2018 id_rsa
--rw------- 1 you you  3.4K Apr  9 12:39 id_rsa.alan
--rw-r--r-- 1 you you  737 Apr  9 12:39 id_rsa.alan.pub
--rw-r--r-- 1 you you  393 Apr 29  2018 id_rsa.pub
-```
-
-Finally, copy the identity file to Alan.
-
-```console
-you@local:~ $ ssh-copy-id -i ~/.ssh/id_rsa.alan you@alan.calc.priv
-```
-
-Now you should be able to login to the cluster using your Alan identity file.
-
-```console
-you@local:~ $ ssh -i ~/.ssh/id_rsa.alan you@alan.calc.priv
-```
-
-To prevent you from having to type the `-i` flag every time you log in, you can simply add the following to `~/.ssh/config`.
-
-```ssh
-Host alan
-  HostName alan.calc.priv
-  IdentityFile ~/.ssh/id_rsa.alan
+you@local:~ $ ssh you@master.alan.priv
 ```
 
 ### Preparing an Anaconda environment
@@ -148,7 +93,7 @@ you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@alan.calc.pri
 
 ## Cluster usage
 
-The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan. 
+The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan.
 
 Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials).
 
