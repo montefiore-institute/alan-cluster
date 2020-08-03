@@ -76,7 +76,7 @@ you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
 
 ### Preparing your (Deep Learning) project
 
-The installation of your Deep Learning environment is quite straightforward after Anaconda has been installed. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis. This is generally good practice as it allows for more convenient reproducability of your experiments.
+The installation of your Deep Learning environment is quite straightforward after Anaconda has been configured. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis. This is generally good practice as it allows for more convenient reproducability of your experiments.
 
 #### PyTorch
 
@@ -86,15 +86,11 @@ you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorc
 
 #### TensorFlow
 
-**Attention**: Install `tensorflow-gpu`! The same holds for `keras-gpu`.
+**Attention**: Install `tensorflow-gpu` to use `tensorflow` on the GPU's! The same holds for `keras-gpu`.
 
 ```console
 you@alan-master:~ $ conda install tensorflow-gpu
 ```
-
-## User account setup
-
-If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
 
 ### Transferring datasets
 
