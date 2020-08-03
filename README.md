@@ -158,10 +158,10 @@ In this case, we recommend to simply read the dataset into memory and load your 
 
 ## Cluster-wide datasets
 
-At the moment we provide the following cluster-wide, read-only datasets which are accessible at `/data/datasets`:
+At the moment we provide the following cluster-wide, **read-only** datasets which are accessible at `/data/datasets`:
 
 ```console
-admin@alan-master:~ $ ll /data/datasets
+you@alan-master:~ $ ls -al /scratch/datasets
 ```
 
 If you would like to propose a new cluster-wide dataset, feel free to [submit a proposal](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO).
