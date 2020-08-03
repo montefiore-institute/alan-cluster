@@ -41,8 +41,9 @@ Once you have been provided with your account details by e-mail, you can connect
 ```console
 you@local:~ $ ssh you@master.alan.priv
 ```
+After logging in with the password provided by the acceptance e-mail, you will be forced to change the password.
 
-In the acceptance e-mail, you will also be provided with a private key, which can be used to connect to the GPU cluster.
+The e-mail will additionally contain a private authenticate key which can be used to connect to the GPU cluster.
 The key can be used by manually executing:
 ```console
 you@local:~ $ ssh -i /path/to/privatekey/alan you@master.alan.priv
@@ -50,7 +51,6 @@ you@local:~ $ ssh -i /path/to/privatekey/alan you@master.alan.priv
 Likewise, the authentication procedure can be automated by moving the private key
 ```console
 you@local:~ $ cp ~/Downloads/alan ~/.ssh/alan
-you@local:~ $ chmod 400 ~/.ssh/alan
 you@local:~ $ chmod 400 ~/.ssh/alan
 ```
 and adding
@@ -64,7 +64,7 @@ to `.ssh/config`.
 
 ### Preparing an Anaconda environment
 
-On your initial login, you will be asked to install an Anaconda installation. **Carefully** read the instructions.
+On your initial login, we will guide you to automatically install an Anaconda environment. **Carefully** read the instructions.
 If you cancelled the installation procedure, you can still setup your Anaconda by executing:
 
 > **Recommended**. **This installs a Python 3 environment by default.**
