@@ -101,16 +101,16 @@ you@alan-master:~ $ mkdir datasets
 you@alan-master:~ $ cd datasets
 ```
 
-Next, the transfer is initiated using `scp` from the machine storing the data (e.g., your desktop computer) to the cluster:
+The transfer is initiated using `scp` from the machine storing the data (e.g., your desktop computer) to the cluster:
 
 ```console
-you@local:~ $ scp -r my_amazing_dataset you@alan.calc.priv:~/datasets/
+you@local:~ $ scp -r my_amazing_dataset you@master.alan.priv:/location/of/datasets/
 ```
 
 Alternatively, one can rely on `rsync`:
 
 ```console
-you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@alan.calc.priv:~/datasets/
+you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@master.alan.priv:/location/of/datasets/
 ```
 
 ## Cluster usage
