@@ -153,7 +153,7 @@ After verifying you have permissions, you can submit your jobs to priority parti
 
 We provide the following filesystems to the user.
 
-| Mountpoint             	| Name                     	| Purpose                             	| Load data to GPU form filesystem?                                                                                                                	| Data persistance   	|
+| Mountpoint             	| Name                     	| Purpose                             	| Load data to GPU from filesystem?                                                                                                                	| Data persistance   	|
 |------------------------	|--------------------------	|-------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------	|
 | `/home/$USER`          	| Home directory           	| Hosts your main files and binaries. 	| Only if the dataset fits in memory. Do not use this endpoint in combination with a lot of random I/O. The performance of your jobs will degrade. 	| :heavy_check_mark: 	|
 | `/scratch/users/$USER` 	| Global scratch directory 	| Fast filesystem.                    	| Yes                                                                                                                                              	| :x:                	|
