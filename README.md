@@ -147,7 +147,7 @@ Your priority status can be obtained by executing
 ```console
 you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "Allowed" || echo "Not allowed"
 ```
-After verifying you have permissions, you can submit your job using by specifying `--partition=priority-quadro` or `--partition=priority-tesla`. Specifying this option while insufficient permissions will result in a submission failure anyway.
+After verifying you have permissions, you can submit your jobs to priority partitions by specifying `--partition=priority-quadro` or `--partition=priority-tesla`. Specifying this option while insufficient permissions will result in a submission failure anyway.
 
 ### Filesystems
 
