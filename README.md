@@ -13,23 +13,26 @@ Table of contents:
   - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
     - [PyTorch](#pytorch)
     - [TensorFlow](#tensorflow)
-  - [Transferring datasets](#transferring-datasets)
 - [Cluster usage](#cluster-usage)
   - [Slurm commands](#slurm-commands)
-  - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-gpu)
-    - [My dataset does not fit in memory](#my-dataset-does-not-fit-in-memory)
-      - [Use the preallocated space on a per-job basis](#use-the-preallocated-space-on-a-per-job-basis)
-      - [Transfer your dataset to the SSD's on the compute nodes](#transfer-your-dataset-to-the-ssds-on-the-compute-nodes)
-    - [My dataset fits in memory](#my-dataset-fits-in-memory)
+  - [Queues](#queues)
+  - [Filesytems](#filesystems)
+  - [Transferring data to the cluster][#transferring-data-to-the-cluster]
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
 
 ## General actions
 
-- [Account registration](https://alan.montefiore.uliege.be/register)
+- [Request an account](https://alan.montefiore.uliege.be/register)
 - [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
 - [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
+
+## User account setup
+
+If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
+
+---
 
 ## User account setup
 
