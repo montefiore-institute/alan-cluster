@@ -153,10 +153,12 @@ After verifying you have permissions, you can submit your jobs to priority parti
 
 We provide the following filesystems to the user.
 
-| Mountpoint             	| Name                     	| Purpose                             	| Load data to GPU from filesystem?                                                                                                                	| Data persistance   	|
-|------------------------	|--------------------------	|-------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------	|
-| `/home/$USER`          	| Home directory           	| Hosts your main files and binaries. 	| Only if the dataset fits in memory. Do not use this endpoint in combination with a lot of random I/O. The performance of your jobs will degrade. 	| :heavy_check_mark: 	|
-| `/scratch/users/$USER` 	| Global scratch directory 	| Fast filesystem.                    	| Yes                                                                                                                                              	| :x:                	|
+| Mountpoint             	| Name                     	| Capacity 	| Purpose                                                                                                                            	| Load data to GPU from filesystem?                                                                                                                	| Data persistance   	|
+|------------------------	|--------------------------	|----------	|------------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------	|
+| `/home/$USER`          	| Home directory           	| 11TB     	| Hosts your main files and binaries.                                                                                                	| Only if the dataset fits in memory. Do not use this endpoint in combination with a lot of random I/O. The performance of your jobs will degrade. 	| :heavy_check_mark: 	|
+| `/scratch/users/$USER` 	| Global scratch directory 	| 65TB     	| Global decentralized filesystem. Store your datasets here if they do not fit in memory, or if it consists of a lot of small files. 	| Yes                                                                                                                                              	| :x:                	|
+
+Data persistance is only guaranteed on `/home/$USER`. Backing-up data hosted on `/scratch` is your responsibility.
 
 ### Recommended ways to load data into the GPU
 
