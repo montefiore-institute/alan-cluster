@@ -42,7 +42,12 @@ Once you have been provided with your account details by e-mail, you can connect
 you@local:~ $ ssh you@master.alan.priv
 ```
 
+
+
 ### Preparing an Anaconda environment
+
+On your initial login, you will be asked to install an Anaconda installation. **Carefully** read the provided instructions. If however,
+you cancelled the installation procedure, you can still setup your Anaconda by executing:
 
 > **Recommended**. **This installs a Python 3 environment by default.**
 
