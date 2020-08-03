@@ -15,11 +15,11 @@ Table of contents:
   - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
     - [PyTorch](#pytorch)
     - [TensorFlow](#tensorflow)
+  - [Transferring your datasets to Alan](#transferring-your-datasets-to-alan)
 - [Cluster usage](#cluster-usage)
   - [Slurm commands](#slurm-commands)
   - [Partitions](#partitions)
   - [Filesytems](#filesystems)
-  - [Transferring data to the cluster](#transferring-data-to-the-cluster)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
@@ -149,28 +149,22 @@ you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && ech
 ```
 After verifying you have permissions, you can submit your job using by specifying `--partition=priority-quadro` or `--partition=priority-tesla`. Specifying this option while insufficient permissions will result in a submission failure anyway.
 
+### Filesystems
+
+We provide the following filesystems to the user.
+
+| Mountpoint             	| Name                     	| Purpose                             	| Load data to GPU form filesystem?                                                                                                                	| Data persistance   	|
+|------------------------	|--------------------------	|-------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------	|
+| `/home/$USER`          	| Home directory           	| Hosts your main files and binaries. 	| Only if the dataset fits in memory. Do not use this endpoint in combination with a lot of random I/O. The performance of your jobs will degrade. 	| :heavy_check_mark: 	|
+| `/scratch/users/$USER` 	| Global scratch directory 	| Fast filesystem.                    	| Yes                                                                                                                                              	| :x:                	|
+
 ### Recommended ways to load data into the GPU
 
-It is generally not recommended to load small batches from the main storage disk because most of Deep Learning requires (small) random batches. This translates into a lot of random IO operations on the main storage *hard disks* of the cluster. Which in turn degrades the performance. We recommend the following ways to load data into the GPU:
+It is generally not recommended to load small batches from the main storage disk because most of Deep Learning requires (small) random batches. This translates into a lot of random IO operations on the main storage *hard disks* of the cluster. Which in turn degrades the performance of all jobs. We recommend the following ways to load data into the GPU:
 
 #### My dataset does not fit in memory
 
-We configured the Cluster to allocate user-directories on the local SSD's of the compute nodes. These are perfectly capable to handle many concurrent random IO operations.
-
-##### Use the preallocated space on a per-job basis
-You can use the folder defined in `/scratch/$SLURM_JOB_USER/$SLURM_JOB_ID` for the entirety of your job. It will be cleaned up automatically after your job has been completed. If your dataset is sufficiently small (say < 50GB), we recommend to use this option. For a 50GB dataset we expect a transfer time of about 1 minute. This option can be used by adding the following line to your Slurm submission script:
-
-```bash
-cp -r /home/you/datasets/my_dataset /scratch/$SLURM_JOB_USER/$SLURM_JOB_ID
-```
-
-**Attention**: Do not forget to actually load the data from `/scratch/$SLURM_JOB_USER/$SLURM_JOB_ID`.
-
-##### Transfer your dataset to the SSD's on the compute nodes
-
-A bottleneck in the approach above is obviously the transfer time to the compute node. This can be resolved by manually transferring the dataset to your scratch-directory on one or several compute nodes. Afterwards, you can add `--nodelist=alan-compute-xx` to your `sbatch` arguments. This will instruct Slurm to allocate the job on `alan-compute-xx`.
-
-**Attention**: Do not forget to delete your dataset from the SSD's when you completed a project.
+Use the global `/scratch` filesystem.
 
 #### My dataset fits in memory
 
