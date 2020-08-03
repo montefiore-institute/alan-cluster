@@ -143,7 +143,7 @@ tesla              up 14-00:00:0   compute-13
 priority-quadro    up 14-00:00:0   compute-[11-12]
 priority-tesla     up 14-00:00:0   compute-13
 ```
-Your priority status can be verified by executing
+Your priority status can be obtained by executing
 ```console
 you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "Allowed" || echo "Not allowed"
 ```
