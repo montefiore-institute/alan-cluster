@@ -17,7 +17,7 @@ Table of contents:
   - [Slurm commands](#slurm-commands)
   - [Queues](#queues)
   - [Filesytems](#filesystems)
-  - [Transferring data to the cluster][#transferring-data-to-the-cluster]
+  - [Transferring data to the cluster](#transferring-data-to-the-cluster)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
@@ -27,12 +27,6 @@ Table of contents:
 - [Request an account](https://alan.montefiore.uliege.be/register)
 - [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
 - [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
-
-## User account setup
-
-If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
-
----
 
 ## User account setup
 
@@ -72,6 +66,10 @@ you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorc
 ```console
 you@alan-master:~ $ conda install tensorflow-gpu
 ```
+
+## User account setup
+
+If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
 
 ### Transferring datasets
 
