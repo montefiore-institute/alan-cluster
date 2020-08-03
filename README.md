@@ -143,8 +143,10 @@ tesla              up 14-00:00:0   compute-13
 priority-quadro    up 14-00:00:0   compute-[11-12]
 priority-tesla     up 14-00:00:0   compute-13
 ```
-
-
+Your priority status can be verified by executing
+```console
+you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "You have priority permissions" || echo "No priority permissions"
+```
 
 ### Recommended ways to load data into the GPU
 
