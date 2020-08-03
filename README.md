@@ -20,6 +20,7 @@ Table of contents:
   - [Slurm commands](#slurm-commands)
   - [Partitions](#partitions)
   - [Filesytems](#filesystems)
+  - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-GPU)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
