@@ -130,7 +130,7 @@ Elementary tutorials can also be found in [`/tutorials/`](https://github.com/mon
 - [`sinfo`](https://slurm.schedmd.com/sinfo.html): get information about the cluster and its nodes.
 
 ### Partitions
-The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type. This enables the user to specifically request certain GPU types. For instance, the high-memory Quadro and Tesla hardware. A specific job partition can be acessed by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. For instance, if you would like to test your script, you can make use of the `debug` partition by specifying `--partition=debug`. Note, this partition has a maximum execution time of 15 minutes to enable high job-throughput. A full overview of the available partitions is shown below.
+The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type. This enables the user to specifically request certain GPU types. For instance, the high-memory Quadro and Tesla hardware. A specific job partition can be acessed by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. For instance, if you would like to test your script, you can make use of the `debug` partition by specifying `--partition=debug`, which has a maximum execution time of 15 minutes. A full overview of the available partitions is shown below.
 ```console
 root@master:~ sinfo -s
 PARTITION       AVAIL  TIMELIMIT   NODELIST
