@@ -166,7 +166,7 @@ We provide the following filesystems to the user.
 | `/home/$USER`          	| Home directory           	| 11TB     	| Hosts your main files and binaries.                                                                                                	| Only if the dataset fits in memory. Do not use this endpoint if your jobs perform a lot of random I/O.                                        	| :heavy_check_mark: 	|
 | `/scratch/users/$USER` 	| Global scratch directory 	| 65TB     	| Global decentralized filesystem. Store your datasets here if they do not fit in memory, or if it consists of a lot of small files. 	| Yes                                                                                                                                              	| :x:                	|
 
-Data persistance is only guaranteed on `/home/$USER`. Backing-up data hosted on `/scratch` is your responsibility.
+Data persistance is only guaranteed on `/home/$USER`. Backing-up data hosted on `/scratch` is your responsibility. As a result, the results of a computation should preferably stored in `/home/$USER`.
 
 ### Recommended ways to load data into the GPU
 
