@@ -21,13 +21,14 @@ Table of contents:
   - [Partitions](#partitions)
   - [Filesytems](#filesystems)
   - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-GPU)
+  - [General workflow](#general-workflow)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
 
 ## General actions
 
-- [Request an account](https://alan.montefiore.uliege.be/register)
+- [Request an account](http://master.alan.priv:9090)
 - [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
 - [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
 
@@ -129,6 +130,7 @@ Elementary tutorials can also be found in [`/tutorials/`](https://github.com/mon
 - [`squeue`](https://slurm.schedmd.com/squeue.html): display jobs currently in the queue and their associated metadata.
 - [`sacct`](https://slurm.schedmd.com/sacct.html): display accounting data for jobs (including finished/cancelled jobs).
 - [`sinfo`](https://slurm.schedmd.com/sinfo.html): get information about the cluster and its nodes.
+- [`seff`](https://bugs.schedmd.com/show_bug.cgi?id=1611): resource utilization efficiency of the specified job.
 
 ### Partitions
 The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type. This enables the user to specifically request certain GPU types. For instance, the high-memory Quadro and Tesla hardware. A specific job partition can be acessed by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. For instance, if you would like to test your script, you can make use of the `debug` partition by specifying `--partition=debug`, which has a maximum execution time of 15 minutes. A full overview of the available partitions is shown below.
@@ -156,14 +158,16 @@ We provide the following filesystems to the user.
 
 | Mountpoint             	| Name                     	| Capacity 	| Purpose                                                                                                                            	| Load data to GPU from filesystem?                                                                                                                	| Data persistance   	|
 |------------------------	|--------------------------	|----------	|------------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------	|
-| `/home/$USER`          	| Home directory           	| 11TB     	| Hosts your main files and binaries.                                                                                                	| Only if the dataset fits in memory. Do not use this endpoint in combination with a lot of random I/O. The performance of your jobs will degrade. 	| :heavy_check_mark: 	|
+| `/home/$USER`          	| Home directory           	| 11TB     	| Hosts your main files and binaries.                                                                                                	| Only if the dataset fits in memory. Do not use this endpoint if your jobs perform a lot of random I/O.                                        	| :heavy_check_mark: 	|
 | `/scratch/users/$USER` 	| Global scratch directory 	| 65TB     	| Global decentralized filesystem. Store your datasets here if they do not fit in memory, or if it consists of a lot of small files. 	| Yes                                                                                                                                              	| :x:                	|
 
 Data persistance is only guaranteed on `/home/$USER`. Backing-up data hosted on `/scratch` is your responsibility.
 
 ### Recommended ways to load data into the GPU
 
-It is generally not recommended to load small batches from the main storage disk because most of Deep Learning requires (small) random batches. This translates into a lot of random IO operations on the main storage *hard disks* of the cluster. Which in turn degrades the performance of all jobs. We recommend the following ways to load data into the GPU:
+It is generally not recommended to load small batches from the main storage disk because most of Deep Learning requires (small) random batches.
+This translates into a lot of random IO operations on the main storage *hard disks* of the cluster,
+which in turn degrades the performance of all jobs. We recommend the following ways to load data into the GPU:
 
 #### My dataset does not fit in memory
 
