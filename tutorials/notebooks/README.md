@@ -47,7 +47,10 @@ The resource allocation of your server can be controlled by changing the paramet
 #
 
 # Activate the Anaconda environment in which to execute the Jupyter instance.
-source activate myenvironment # CHANGEME
+conda activate myenvironment     # CHANGEME
+
+# Start Jupyter Lab
+jupyter lab --ip='*' --no-browser
 ```
 Please make sure you change the Anaconda environment in the submission file. By default is set to `myenvironment`. After your resources have been properly configured, the Jupyter instance is ready to be scheduled by Slurm:
 ```console
@@ -66,7 +69,7 @@ The IP address and port allocated to your Jupyter instance can be extracted from
 you@alan-master:~ $ cat jupyter.log | grep alan-compute
 [I 17:00:28.508 LabApp] http://alan-compute-05:8888/
 ```
-The address in conjunction with the ealier defined password can be used to access the Jupyter instance through your browser. Assuming you are connected to the ULG internal network (e.g., through the VPN or some other service). The server can be terminated through the browser or via the `scancel` command.
+The address in conjunction with the ealier defined password can be used to access the Jupyter instance through your browser. Assuming you are connected to the ULiège internal network (e.g., through the VPN or some other service). The server can be terminated through the browser or via the `scancel` command.
 
 ## Advanced options
 

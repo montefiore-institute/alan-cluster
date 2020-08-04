@@ -6,7 +6,7 @@ This short tutorial will guide you on how to run your first Deep Learning job on
 
 ```console
 you@alan-master:~ $ conda activate myenvironment
-you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
 
 ## Training a Convolutional network on MNIST
@@ -32,7 +32,7 @@ Jobs are scheduled on Alan through Slurm scripts. They specify the resources you
 #
 
 # Activate your Anaconda environment
-source activate myenvironment         # CHANGEME
+conda activate myenvironment         # CHANGEME
 
 # Run your Python script
 cd /home/you/mnist  # CHANGEME
