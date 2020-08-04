@@ -13,9 +13,9 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 ---
 
 Table of contents:
+- [General actions](#general-actions)
 - [User account setup](#user-account-setup)
   - [Connecting to Alan](#connecting-to-alan)
-  - [SSH keys](#ssh-keys)
   - [Preparing an Anaconda environment](#preparing-an-anaconda-environment)
   - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
     - [PyTorch](#pytorch)
@@ -24,15 +24,17 @@ Table of contents:
 - [Cluster usage](#cluster-usage)
   - [Slurm commands](#slurm-commands)
   - [Partitions](#partitions)
-  - [Filesytems](#filesystems)
-  - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-GPU)
+  - [Filesystems](#filesystems)
+  - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-gpu)
+    - [My dataset does not fit in memory](#my-dataset-does-not-fit-in-memory)
+    - [My dataset fits in memory](#my-dataset-fits-in-memory)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
 
 ## User account setup
 
-If you do not have an account, please submit [this](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=new+user&template=new-user.md&title=%5BNew+User%5D+TODO) form to request access to the GPU cluster.
+If you do not have an account, then first [request an account](http://master.alan.priv:9090) to the GPU cluster.
 
 ### Connecting to Alan
 
@@ -41,7 +43,7 @@ Once you have been provided with your account details by e-mail, you can connect
 ```console
 you@local:~ $ ssh you@master.alan.priv
 ```
-After logging in with the password provided by the acceptance e-mail, you will be forced to change the password.
+After logging in with the password provided by the account confirmation e-mail, you will be forced to change the password.
 
 The e-mail will additionally contain a private authentication key which can be used to connect to the GPU cluster.
 The key can be used by manually executing:
@@ -50,7 +52,7 @@ you@local:~ $ ssh -i /path/to/privatekey/alan you@master.alan.priv
 ```
 Likewise, the authentication procedure can be automated by moving the private key
 ```console
-you@local:~ $ cp ~/Downloads/alan ~/.ssh/alan
+you@local:~ $ cp /path/to/privatekey/alan ~/.ssh/alan
 you@local:~ $ chmod 400 ~/.ssh/alan
 ```
 and adding
@@ -81,7 +83,7 @@ The installation of your Deep Learning environment is quite straightforward afte
 #### PyTorch
 
 ```console
-you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
 
 #### TensorFlow
@@ -117,7 +119,7 @@ you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@master.alan.p
 
 The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan.
 
-Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials).
+Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials). Read them to get quickly started.
 
 ### Slurm commands
 
@@ -131,7 +133,11 @@ Elementary tutorials can also be found in [`/tutorials/`](https://github.com/mon
 - [`seff`](https://bugs.schedmd.com/show_bug.cgi?id=1611): resource utilization efficiency of the specified job.
 
 ### Partitions
-The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type. This enables the user to specifically request certain GPU types. For instance, the high-memory Quadro and Tesla hardware. A specific job partition can be acessed by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. For instance, if you would like to test your script, you can make use of the `debug` partition by specifying `--partition=debug`, which has a maximum execution time of 15 minutes. A full overview of the available partitions is shown below.
+The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type: `1080ti` (GTX 1080 Ti), `2080ti` (RTX 2080 Ti), `quadro` (Quadro RTX 6000) and `tesla` (Tesla V100). This enables the user to specifically request specific GPUs depending on her needs. A specific job partition can be requested by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. If no partition is specified, then a job will be scheduled where resources are available.
+
+For debugging purposes, e.g. if you would like to quickly test your script, you can also make use of the `debug` partition by specifying `--partition=debug`. This partition has a maximum execution time of 15 minutes. 
+
+A full overview of the available partitions is shown below.
 ```console
 root@master:~ sinfo -s
 PARTITION       AVAIL  TIMELIMIT   NODELIST
@@ -144,11 +150,12 @@ tesla              up 14-00:00:0   compute-13
 priority-quadro    up 14-00:00:0   compute-[11-12]
 priority-tesla     up 14-00:00:0   compute-13
 ```
-Your priority status can be obtained by executing
+The high-priority partitions `priority-quadro` and `priority-tesla` can be used to request either Quadro RTX 6000 or Tesla V100 GPUs while flagging your job as high priority in the job queue. This privilege is only available to some users. The `quadro` and `tesla` partitions can be requested by all users, but the priority of the corresponding jobs will be kept as normal.
+
+Your priority status can be obtained by executing:
 ```console
 you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "Allowed" || echo "Not allowed"
 ```
-After verifying you have permissions, you can submit your jobs to priority partitions by specifying `--partition=priority-quadro` or `--partition=priority-tesla`. Specifying this option while insufficient permissions will result in a submission failure anyway.
 
 ### Filesystems
 
