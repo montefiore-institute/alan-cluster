@@ -4,10 +4,15 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 **The documentation assumes you have access to the private network of the university.**
 
+## General actions
+
+- [Request an account](http://master.alan.priv:9090)
+- [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
+- [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
+
 ---
 
 Table of contents:
-- [General actions](#general-actions)
 - [User account setup](#user-account-setup)
   - [Connecting to Alan](#connecting-to-alan)
   - [SSH keys](#ssh-keys)
@@ -24,12 +29,6 @@ Table of contents:
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
-
-## General actions
-
-- [Request an account](http://master.alan.priv:9090)
-- [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
-- [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
 
 ## User account setup
 
