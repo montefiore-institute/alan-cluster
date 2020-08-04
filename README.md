@@ -21,7 +21,6 @@ Table of contents:
   - [Partitions](#partitions)
   - [Filesytems](#filesystems)
   - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-GPU)
-  - [General workflow](#general-workflow)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 
 ---
