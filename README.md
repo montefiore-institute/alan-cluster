@@ -67,7 +67,7 @@ to `.ssh/config`.
 ### Preparing an Anaconda environment
 
 On your initial login, we will guide you to automatically install an Anaconda environment. **Carefully** read the instructions.
-If you cancelled the installation procedure, you can still setup your Anaconda by executing:
+If you cancelled the installation procedure, you can still setup Anaconda by executing:
 
 > **Recommended**. **This installs a Python 3 environment by default.**
 
