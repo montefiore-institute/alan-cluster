@@ -119,7 +119,7 @@ you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@master.alan.p
 
 The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan.
 
-Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials). Read them to get quickly started.
+Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials). Read them to get started quickly.
 
 ### Slurm commands
 
