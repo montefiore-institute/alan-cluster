@@ -66,7 +66,7 @@ you@alan-master:~ $ squeue | grep you | grep JUPYTER
 ```
 The IP address and port allocated to your Jupyter instance can be extracted from the log file, as specified above.
 ```console
-you@alan-master:~ $ cat jupyter.log | grep alan-compute
+you@alan-master:~ $ cat jupyter.log | grep compute
 [I 17:00:28.508 LabApp] http://compute-05:8888/
 ```
 The address in conjunction with the ealier defined password can be used to access the Jupyter instance through your browser.
