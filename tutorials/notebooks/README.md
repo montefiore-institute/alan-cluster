@@ -58,7 +58,7 @@ you@alan-master:~ $ sbatch jupyter.sbatch
 Submitted batch job 1333969
 ```
 
-## Accessing the Juypter server
+## Accessing the Jupyter server
 
 After the Jupyter instance has been scheduled by Slurm, i.e., it is in a running state:
 ```console
