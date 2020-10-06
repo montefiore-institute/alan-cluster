@@ -6,7 +6,7 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 
 ## General actions
 
-- [Request an account](http://master.alan.priv:9090)
+- [Request an account](https://alan.montefiore.uliege.be/register)
 - [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
 - [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
 
@@ -34,7 +34,7 @@ Table of contents:
 
 ## User account setup
 
-If you do not have an account, then first [request an account](http://master.alan.priv:9090) to the GPU cluster.
+If you do not have an account, then first [request an account](https://alan.montefiore.uliege.be/register) to the GPU cluster.
 
 ### Connecting to Alan
 
@@ -135,7 +135,7 @@ Elementary tutorials can also be found in [`/tutorials/`](https://github.com/mon
 ### Partitions
 The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type: `1080ti` (GTX 1080 Ti), `2080ti` (RTX 2080 Ti), `quadro` (Quadro RTX 6000) and `tesla` (Tesla V100). This enables the user to specifically request specific GPUs depending on her needs. A specific job partition can be requested by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. If no partition is specified, then a job will be scheduled where resources are available.
 
-For debugging purposes, e.g. if you would like to quickly test your script, you can also make use of the `debug` partition by specifying `--partition=debug`. This partition has a maximum execution time of 15 minutes. 
+For debugging purposes, e.g. if you would like to quickly test your script, you can also make use of the `debug` partition by specifying `--partition=debug`. This partition has a maximum execution time of 15 minutes.
 
 A full overview of the available partitions is shown below.
 ```console
