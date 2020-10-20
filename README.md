@@ -196,7 +196,7 @@ If you would like to propose a new cluster-wide dataset, feel free to [submit a 
 
 ### Centralised Jupyter Access
 
-We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter).
+We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter). To use this service, you first need to install `jupyterhub` with your Anaconda installation in order to spawn kernels within your personal Python environment.
 
 #### Is it possible to access Jupyter Lab?
 
