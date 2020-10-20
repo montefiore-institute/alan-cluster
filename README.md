@@ -9,6 +9,7 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 - [Request an account](https://alan.montefiore.uliege.be/register)
 - [Request a new feature](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO)
 - [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
+- [Access JupyterHub](https://alan.montefiore.uliege.be/jupyter/)
 
 ---
 
@@ -29,6 +30,7 @@ Table of contents:
     - [My dataset does not fit in memory](#my-dataset-does-not-fit-in-memory)
     - [My dataset fits in memory](#my-dataset-fits-in-memory)
 - [Cluster-wide datasets](#cluster-wide-datasets)
+- [Centralised Jupyter Access](#centralised-jupyter-access)
 
 ---
 
@@ -191,3 +193,7 @@ you@alan-master:~ $ ls -al /scratch/datasets
 ```
 
 If you would like to propose a new cluster-wide dataset, feel free to [submit a proposal](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO).
+
+### Centralised Jupyter Access
+
+We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter).
