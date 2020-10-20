@@ -196,7 +196,7 @@ If you would like to propose a new cluster-wide dataset, feel free to [submit a 
 
 ### Centralised Jupyter Access
 
-We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter).
+We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter). Launching kernels within existing environments is possible. No additional configuration is required.
 
 #### Is it possible to access Jupyter Lab?
 
