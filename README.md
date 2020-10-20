@@ -197,3 +197,15 @@ If you would like to propose a new cluster-wide dataset, feel free to [submit a 
 ### Centralised Jupyter Access
 
 We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter).
+
+#### Is it possible to access Jupyter Lab?
+
+Yes, simply change the `tree` keyword in the URL to `lab`. For instance
+
+```
+https://alan.montefiore.uliege.be/jupyter/user/jhermans/tree
+```
+becomes
+```
+https://alan.montefiore.uliege.be/jupyter/user/jhermans/lab
+```
