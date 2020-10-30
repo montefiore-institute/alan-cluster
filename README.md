@@ -31,6 +31,8 @@ Table of contents:
     - [My dataset fits in memory](#my-dataset-fits-in-memory)
 - [Cluster-wide datasets](#cluster-wide-datasets)
 - [Centralised Jupyter Access](#centralised-jupyter-access)
+    - [Accessing Jupyter Lab](#is-it-possible-to-access-jupyter-lab)
+    - [Launching multiple servers](#launching-multiple-servers)
 
 ---
 
@@ -196,7 +198,10 @@ If you would like to propose a new cluster-wide dataset, feel free to [submit a 
 
 ### Centralised Jupyter Access
 
-We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter). Launching kernels within existing environments is possible. No additional configuration is required.
+We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter).
+Launching kernels within existing environments is possible. No additional configuration is required.
+
+> Please note that, in order to use existing environments, Anaconda should be installed (compact installations such as miniconda will not work).
 
 #### Is it possible to access Jupyter Lab?
 
@@ -209,3 +214,15 @@ becomes
 ```
 https://alan.montefiore.uliege.be/jupyter/user/jhermans/lab
 ```
+
+#### Launching multiple servers
+
+We allow you to have more than one running server at the same time. To add a new server, navigate to the control panel.
+
+##### Via Jupyter Lab
+
+In the top left corner: `File -> Hub Control Panel`
+
+##### Via Jupyter Notebook
+
+In the top right corner: `Control Panel`
