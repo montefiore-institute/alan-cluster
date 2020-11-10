@@ -76,8 +76,8 @@ If you cancelled the installation procedure, you can still setup Anaconda by exe
 > **Recommended**. **This installs a Python 3 environment by default.**
 
 ```console
-you@alan-master:~ $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-you@alan-master:~ $ sh Miniconda3-latest-Linux-x86_64.sh
+you@alan-master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+you@alan-master:~ $ sh Anaconda3-2020.07-Linux-x86_64.sh
 ```
 
 ### Preparing your (Deep Learning) project
