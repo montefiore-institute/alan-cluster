@@ -196,14 +196,14 @@ you@alan-master:~ $ ls -al /scratch/datasets
 
 If you would like to propose a new cluster-wide dataset, feel free to [submit a proposal](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO).
 
-### Centralised Jupyter Access
+## Centralised Jupyter Access
 
 We provide a centralised Jupyter instance which can be accessed using your Alan account at [https://alan.montefiore.uliege.be/jupyter](https://alan.montefiore.uliege.be/jupyter).
 Launching kernels within existing environments is possible. No additional configuration is required.
 
 > Please note that, in order to use existing environments, Anaconda should be installed (compact installations such as miniconda will not work).
 
-#### Is it possible to access Jupyter Lab?
+### Is it possible to access Jupyter Lab?
 
 Yes, simply change the `tree` keyword in the URL to `lab`. For instance
 
@@ -215,14 +215,14 @@ becomes
 https://alan.montefiore.uliege.be/jupyter/user/jhermans/lab
 ```
 
-#### Launching multiple servers
+### Launching multiple servers
 
 We allow you to have more than one running server at the same time. To add a new server, navigate to the control panel.
 
-##### Via Jupyter Lab
+#### Via Jupyter Lab
 
 In the top left corner: `File -> Hub Control Panel`
 
-##### Via Jupyter Notebook
+#### Via Jupyter Notebook
 
 In the top right corner: `Control Panel`
