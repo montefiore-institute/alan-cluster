@@ -203,6 +203,8 @@ Launching kernels within existing environments is possible. No additional config
 
 > Please note that, in order to use existing environments, Anaconda should be installed (compact installations such as miniconda will not work).
 
+> **Important**: Make sure `nb_conda_kernels` installed in your `base` environment if you want your Anaconda environments to show up in JupyterHub. In addition, ensure `ipykernel` is installed in your environments of interest.
+
 ### Is it possible to access Jupyter Lab?
 
 Yes, simply change the `tree` keyword in the URL to `lab`. For instance
