@@ -64,13 +64,14 @@ Python 3.9.13
 #### PyTorch
 
 ```console
-(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=11.3 -c pytorch
 ```
 
 #### Jax
 
 ```console
-(myenv) you@master:~ $ conda install jax cuda-nvcc -c conda-forge -c nvidia
+(myenv) you@master:~ $ conda install cudatoolkit=11.3 cuda-nvcc -c default -c nvidia
+(myenv) you@master:~ $ pip install jax[cuda] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
 #### TensorFlow
