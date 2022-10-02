@@ -1,12 +1,10 @@
 # Running a Deep Learning job 
 
-This short tutorial will guide you on how to run your first Deep Learning job on Alan.
-
-**Attention:** This document assumes you have an Anaconda environment configured with PyTorch.
+This short tutorial will guide you on how to run your first Deep Learning job on Alan. This document assumes you have an Anaconda environment configured with PyTorch.
 
 ```console
-you@alan-master:~ $ conda activate myenvironment
-you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+you@master:~ $ conda activate myenv
+(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
 
 ## Training a Convolutional network on MNIST
@@ -15,9 +13,9 @@ You have just followed the last lecture of INFO8010 and you are now ready to tra
 
 ## Scheduling your job
 
-Jobs are scheduled on Alan through Slurm scripts. They specify the resources you are requesting to execute your job, as well as the sequence of instructions you want to execute. In the Slurm script `mnist.sbatch` below, we allocate 2 CPUs et 1 GPU and specify the Python script we want to run on the cluster. 
+Jobs are scheduled on Alan through Slurm scripts. They specify the resources you are requesting to execute your job, as well as the sequence of instructions you want to execute. In the Slurm script `mnist.sbatch` below, we allocate 2 CPUs and 1 GPU and specify the Python script we want to run on the cluster.
 
-```console
+```bash
 #!/usr/bin/env bash
 #
 # Slurm arguments
@@ -32,32 +30,29 @@ Jobs are scheduled on Alan through Slurm scripts. They specify the resources you
 #
 
 # Activate your Anaconda environment
-conda activate myenvironment         # CHANGEME
+conda activate myenv # CHANGEME
 
 # Run your Python script
-cd /home/you/mnist  # CHANGEME
+cd path/to/mnist # CHANGEME
 python mnist.py
 ```
 
 After your resources have been properly configured, your PyTorch script is ready to be scheduled by Slurm:
 ```console
-you@alan-master:~ $ sbatch mnist.sbatch
+you@master:~ $ sbatch mnist.sbatch
 Submitted batch job 1346061
 ```
 
 You can check the scheduling queue using the `squeue` command. It tells you about the jobs that are pending for resources and indicates those currently running:
-
 ```console
-you@alan-master:~ $ squeue
+you@master:~ $ squeue --user $USER
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-               ...
-           1346061       all    mnist  glouppe  R       0:07      1 alan-compute-02
+           1346061       all    mnist      you  R       0:07      1 compute-02
 ```
 
 The ouput file of the execution will be written to `mnist/mnist-output.log`:
-
 ```console
-you@alan-master:~ $ more mnist/mnist-output.log 
+you@master:~ $ more mnist/mnist-output.log
 Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ../data/MNIST/raw/train-images-idx3-ubyte.gz
 Extracting ../data/MNIST/raw/train-images-idx3-ubyte.gz to ../data/MNIST/raw
 Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ../data/MNIST/raw/train-labels-idx1-ubyte.gz

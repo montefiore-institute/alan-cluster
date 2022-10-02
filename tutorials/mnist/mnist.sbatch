@@ -12,8 +12,8 @@
 #
 
 # Activate your Anaconda environment
-conda activate myenvironment        # CHANGEME
+conda activate myenv # CHANGEME
 
 # Run your Python script
-cd /home/username/sandbox/mnist     # CHANGEME
+cd path/to/mnist # CHANGEME
 python mnist.py

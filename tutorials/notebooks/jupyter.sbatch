@@ -12,7 +12,7 @@
 #
 
 # Activate the Anaconda environment in which to execute the Jupyter instance.
-conda activate myenvironment # CHANGEME
+conda activate myenv # CHANGEME
 
 # Start Jupyter Lab
 jupyter lab --ip='*' --no-browser
