@@ -11,6 +11,31 @@ Documentation and guidelines for the Alan GPU cluster at the University of Lièg
 - [Submit an issue](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=bug&template=issue-report.md&title=%5BIssue%5D+TODO)
 - [Access JupyterHub](https://alan.montefiore.uliege.be/jupyter/)
 
+---
+
+Table of contents:
+- [General actions](#general-actions)
+- [User account setup](#user-account-setup)
+  - [Connecting to Alan](#connecting-to-alan)
+  - [Preparing an Anaconda environment](#preparing-an-anaconda-environment)
+  - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
+    - [PyTorch](#pytorch)
+    - [TensorFlow](#tensorflow)
+  - [Transferring your datasets to Alan](#transferring-your-datasets-to-alan)
+- [Cluster usage](#cluster-usage)
+  - [Slurm commands](#slurm-commands)
+  - [Partitions](#partitions)
+  - [Filesystems](#filesystems)
+  - [Recommended ways to load data into the GPU](#recommended-ways-to-load-data-into-the-gpu)
+    - [My dataset does not fit in memory](#my-dataset-does-not-fit-in-memory)
+    - [My dataset fits in memory](#my-dataset-fits-in-memory)
+- [Cluster-wide datasets](#cluster-wide-datasets)
+- [Centralised Jupyter Access](#centralised-jupyter-access)
+    - [Accessing Jupyter Lab](#is-it-possible-to-access-jupyter-lab)
+    - [Launching multiple servers](#launching-multiple-servers)
+
+---
+
 ## User account setup
 
 If you do not have an account, then first [request an account](https://alan.montefiore.uliege.be/register) to the GPU cluster.
@@ -46,8 +71,8 @@ to `~/.ssh/config`.
 On your initial login, we will guide you to automatically install an Anaconda environment. **Carefully** read the instructions. If you cancelled the installation procedure, you can still setup Anaconda by executing:
 
 ```console
-you@master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-you@master:~ $ sh Anaconda3-2020.07-Linux-x86_64.sh
+you@master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+you@master:~ $ sh Anaconda3-2022.05-Linux-x86_64.sh
 ```
 
 ### Preparing your (Deep Learning) project
@@ -64,14 +89,7 @@ Python 3.9.13
 #### PyTorch
 
 ```console
-(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=11.3 -c pytorch
-```
-
-#### Jax
-
-```console
-(myenv) you@master:~ $ conda install cudatoolkit=11.3 cuda-nvcc -c default -c nvidia
-(myenv) you@master:~ $ pip install jax[cuda] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
 ```
 
 #### TensorFlow
