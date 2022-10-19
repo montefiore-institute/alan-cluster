@@ -4,7 +4,7 @@ This short tutorial will guide you on how to run your first Deep Learning job on
 
 ```console
 you@master:~ $ conda activate myenv
-(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=11.6 -c pytorch -c conda-forge
 ```
 
 ## Training a Convolutional network on MNIST

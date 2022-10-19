@@ -89,7 +89,13 @@ Python 3.9.13
 #### PyTorch
 
 ```console
-(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=11.6 -c pytorch -c conda-forge
+```
+
+#### Jax
+
+```console
+(myenv) you@master:~ $ conda install jax cuda-nvcc=11.7 -c conda-forge -c nvidia
 ```
 
 #### TensorFlow
