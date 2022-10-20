@@ -43,92 +43,95 @@ If you do not have an account, then first [request an account](https://alan.mont
 ### Connecting to Alan
 
 Once you have been provided with your account details by e-mail, you can connect to Alan through SSH:
-
 ```console
 you@local:~ $ ssh you@master.alan.priv
 ```
 After logging in with the password provided by the account confirmation e-mail, you will be forced to change the password.
 
-The e-mail will additionally contain a private authentication key which can be used to connect to the GPU cluster.
-The key can be used by manually executing:
+The e-mail will additionally contain a private authentication key which can be used to connect to the GPU cluster. The key can be used by manually executing:
 ```console
-you@local:~ $ ssh -i /path/to/privatekey/alan you@master.alan.priv
+you@local:~ $ ssh -i path/to/privatekey you@master.alan.priv
 ```
-Likewise, the authentication procedure can be automated by moving the private key
+The authentication procedure can be automated by moving the private key
 ```console
-you@local:~ $ cp /path/to/privatekey/alan ~/.ssh/alan
-you@local:~ $ chmod 400 ~/.ssh/alan
+you@local:~ $ cp path/to/privatekey ~/.ssh/id_alan
+you@local:~ $ chmod 400 ~/.ssh/id_alan
 ```
 and adding
-```bash
+```
 Host alan
   HostName master.alan.priv
-  IdentityFile ~/.ssh/alan
+  User you
+  IdentityFile ~/.ssh/id_alan
 ```
-to `.ssh/config`.
-
+to `~/.ssh/config`.
 
 ### Preparing an Anaconda environment
 
-On your initial login, we will guide you to automatically install an Anaconda environment. **Carefully** read the instructions.
-If you cancelled the installation procedure, you can still setup Anaconda by executing:
-
-> **Recommended**. **This installs a Python 3 environment by default.**
+On your initial login, we will guide you to automatically install an Anaconda environment. **Carefully** read the instructions. If you cancelled the installation procedure, you can still setup Anaconda by executing:
 
 ```console
-you@alan-master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-you@alan-master:~ $ sh Anaconda3-2020.07-Linux-x86_64.sh
+you@master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+you@master:~ $ sh Anaconda3-2022.05-Linux-x86_64.sh
 ```
 
 ### Preparing your (Deep Learning) project
 
-The installation of your Deep Learning environment is quite straightforward after Anaconda has been configured. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis. This is generally good practice as it allows for more convenient reproducability of your experiments.
+The installation of your Deep Learning environment is quite straightforward after Anaconda has been configured. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis as it allows for better encapsulation and reproducibility of your experiments.
+
+```console
+you@master:~ $ conda create -n myenv python=3.9
+you@master:~ $ conda activate myenv
+(myenv) you@master:~ $ python --version
+Python 3.9.13
+```
 
 #### PyTorch
 
 ```console
-you@alan-master:~ $ conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=11.6 -c pytorch -c conda-forge
+```
+
+#### Jax
+
+```console
+(myenv) you@master:~ $ conda install jax cuda-nvcc=11.7 -c conda-forge -c nvidia
 ```
 
 #### TensorFlow
 
-> **Attention**. Install `tensorflow-gpu` to use `tensorflow` on the GPU's! The same holds for `keras-gpu`.
-
 ```console
-you@alan-master:~ $ conda install tensorflow-gpu
+(myenv) you@master:~ $ conda install tensorflow-gpu
 ```
 
 ### Transferring your datasets to Alan
 
 This section shows you how to transfer your datasets to the GPU cluster. It is a good practice to centralize your datasets in a common folder:
-
 ```console
-you@alan-master:~ $ mkdir datasets
-you@alan-master:~ $ cd datasets
+you@master:~ $ mkdir -p path/to/datasets
+you@master:~ $ cd path/to/datasets
 ```
 
-The transfer is initiated using `scp` from the machine storing the data (e.g., your desktop computer) to the cluster:
-
+The transfer is initiated using `scp` from the machine storing the data (e.g. your desktop computer) to the cluster:
 ```console
-you@local:~ $ scp -r my_amazing_dataset you@master.alan.priv:/location/of/datasets/
+you@local:~ $ scp -r my_dataset alan:path/to/datasets
 ```
 
 Alternatively, one can rely on `rsync`:
-
 ```console
-you@local:~ $ rsync -r -v --progress my_amazing_dataset -e ssh you@master.alan.priv:/location/of/datasets/
+you@local:~ $ rsync -r -v --progress my_dataset -e ssh alan:path/to/datasets
 ```
 
 ## Cluster usage
 
 The CECI cluster documentation features a [thorough Slurm guide](https://support.ceci-hpc.be/doc/_contents/QuickStart/SubmittingJobs/SlurmTutorial.html). Read it carefully before using Alan.
 
-Elementary tutorials can also be found in [`/tutorials/`](https://github.com/montefiore-ai/alan-cluster/tree/master/tutorials). Read them to get started quickly.
+Elementary tutorials can also be found in [`/tutorials`](tutorials). Read them to get started quickly.
 
 ### Slurm commands
 
 - [`sbatch`](https://slurm.schedmd.com/sbatch.html): submit a job to the cluster.
-  - To reserve GPU(s) add `--gres=gpu:N_GPUS` to `sbatch`.
+  - To reserve `N` GPU(s) add `--gres=gpu:N` to `sbatch`.
 - [`scancel`](https://slurm.schedmd.com/scancel.html): cancel queued or running jobs.
 - [`srun`](https://slurm.schedmd.com/srun.html): launch a job step.
 - [`squeue`](https://slurm.schedmd.com/squeue.html): display jobs currently in the queue and their associated metadata.
@@ -137,13 +140,14 @@ Elementary tutorials can also be found in [`/tutorials/`](https://github.com/mon
 - [`seff`](https://bugs.schedmd.com/show_bug.cgi?id=1611): resource utilization efficiency of the specified job.
 
 ### Partitions
+
 The cluster provides several queues or job partitions. We made the design decision to partition the job queues based on the GPU type: `1080ti` (GTX 1080 Ti), `2080ti` (RTX 2080 Ti), `quadro` (Quadro RTX 6000) and `tesla` (Tesla V100). This enables the user to specifically request specific GPUs depending on her needs. A specific job partition can be requested by specifying `--partition=<partition>` to the `sbatch` command or in your submission script. If no partition is specified, then a job will be scheduled where resources are available.
 
 For debugging purposes, e.g. if you would like to quickly test your script, you can also make use of the `debug` partition by specifying `--partition=debug`. This partition has a maximum execution time of 15 minutes.
 
 A full overview of the available partitions is shown below.
 ```console
-root@master:~ sinfo -s
+you@master:~ $ sinfo -s
 PARTITION       AVAIL  TIMELIMIT   NODELIST
 all*               up 14-00:00:0   compute-[01-04,06-13]
 debug              up      15:00   compute-05
@@ -153,30 +157,29 @@ quadro             up 14-00:00:0   compute-[11-12]
 tesla              up 14-00:00:0   compute-13
 priority-quadro    up 14-00:00:0   compute-[11-12]
 priority-tesla     up 14-00:00:0   compute-13
+priority           up 14-00:00:0   compute-[01-04,06-13]
 ```
 The high-priority partitions `priority-quadro` and `priority-tesla` can be used to request either Quadro RTX 6000 or Tesla V100 GPUs while flagging your job as high priority in the job queue. This privilege is only available to some users. The `quadro` and `tesla` partitions can be requested by all users, but the priority of the corresponding jobs will be kept as normal.
 
 Your priority status can be obtained by executing:
 ```console
-you@master:~ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "Allowed" || echo "Not allowed"
+you@master:~ $ sacctmgr show assoc | grep $USER | grep priority > /dev/null && echo "allowed" || echo "not allowed"
 ```
 
 ### Filesystems
 
 We provide the following filesystems to the user.
 
-| Mountpoint             	| Name                     	| Capacity 	| Purpose                                                                                                                            	| Load data to GPU from filesystem?                                                                                                                	| Data persistance   	|
-|------------------------	|--------------------------	|----------	|------------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------	|
-| `/home/$USER`          	| Home directory           	| 11TB     	| Hosts your main files and binaries.                                                                                                	| Only if the dataset fits in memory. Do not use this endpoint if your jobs perform a lot of random I/O.                                        	| :heavy_check_mark: 	|
-| `/scratch/users/$USER` 	| Global scratch directory 	| 65TB     	| Global decentralized filesystem. Store your datasets here if they do not fit in memory, or if it consists of a lot of small files. 	| Yes                                                                                                                                              	| :x:                	|
+| Mountpoint             | Name                     | Capacity | Purpose                                                                                                                            | Load data to GPU from filesystem?                                                                      | Data persistance   |
+|------------------------|--------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------|
+| `/home/$USER`          | Home directory           | 11TB     | Hosts your main files and binaries.                                                                                                | Only if the dataset fits in memory. Do not use this endpoint if your jobs perform a lot of random I/O. | :heavy_check_mark: |
+| `/scratch/users/$USER` | Global scratch directory | 65TB     | Global decentralized filesystem. Store your datasets here if they do not fit in memory, or if it consists of a lot of small files. | Yes                                                                                                    | :x:                |
 
-Data persistance is only guaranteed on `/home/$USER`. Backing-up data hosted on `/scratch` is your responsibility. As a result, the results of a computation should preferably stored in `/home/$USER`.
+Data persistance is only guaranteed on `/home/$USER`. Backing-up data hosted on `/scratch` is your responsibility. The results of a computation should preferably stored in `/home/$USER`.
 
 ### Recommended ways to load data into the GPU
 
-It is generally not recommended to load small batches from the main storage disk because most of Deep Learning requires (small) random batches.
-This translates into a lot of random IO operations on the main storage *hard disks* of the cluster,
-which in turn degrades the performance of all jobs. We recommend the following ways to load data into the GPU:
+It is generally not recommended to load small batches from the main storage disk. This translates into a lot of random IO operations on the main storage *hard disks* of the cluster, which in turn degrades the performance of all jobs. We recommend the following ways to load data into the GPU:
 
 #### My dataset does not fit in memory
 
@@ -188,10 +191,9 @@ In this case, we recommend to simply read the dataset into memory and load your 
 
 ## Cluster-wide datasets
 
-At the moment we provide the following cluster-wide, **read-only** datasets which are accessible at `/data/datasets`:
-
+At the moment we provide the following cluster-wide, **read-only** datasets which are accessible at `/scratch/datasets`:
 ```console
-you@alan-master:~ $ ls -al /scratch/datasets
+you@master:~ $ ls -l /scratch/datasets
 ```
 
 If you would like to propose a new cluster-wide dataset, feel free to [submit a proposal](https://github.com/montefiore-ai/alan-cluster/issues/new?assignees=JoeriHermans&labels=enhancement&template=feature-request.md&title=%5BFeature+Request%5D+TODO).
@@ -208,13 +210,12 @@ Launching kernels within existing environments is possible. No additional config
 ### Is it possible to access Jupyter Lab?
 
 Yes, simply change the `tree` keyword in the URL to `lab`. For instance
-
 ```
-https://alan.montefiore.uliege.be/jupyter/user/jhermans/tree
+https://alan.montefiore.uliege.be/jupyter/user/you/tree
 ```
 becomes
 ```
-https://alan.montefiore.uliege.be/jupyter/user/jhermans/lab
+https://alan.montefiore.uliege.be/jupyter/user/you/lab
 ```
 
 ### Launching multiple servers
