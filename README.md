@@ -20,6 +20,7 @@ Table of contents:
   - [Preparing an Anaconda environment](#preparing-an-anaconda-environment)
   - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
     - [PyTorch](#pytorch)
+    - [Jax](#jax)
     - [TensorFlow](#tensorflow)
   - [Transferring your datasets to Alan](#transferring-your-datasets-to-alan)
 - [Cluster usage](#cluster-usage)
