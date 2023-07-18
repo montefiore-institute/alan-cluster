@@ -17,7 +17,7 @@ Table of contents:
 - [General actions](#general-actions)
 - [User account setup](#user-account-setup)
   - [Connecting to Alan](#connecting-to-alan)
-  - [Preparing an conda environment](#preparing-an-conda-environment)
+  - [Preparing a conda environment](#preparing-a-conda-environment)
   - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
     - [PyTorch](#pytorch)
     - [Jax](#jax)
@@ -67,7 +67,7 @@ Host alan
 ```
 to `~/.ssh/config`.
 
-### Preparing an conda environment
+### Preparing a conda environment
 
 On your initial login, we will guide you to automatically install a conda environment. **Carefully** read the instructions. If you cancelled the installation procedure, you can still setup conda by executing:
 
@@ -87,7 +87,7 @@ you@master:~ $ bash <(curl -L micro.mamba.pm/install.sh)
 The installation of your Deep Learning environment is quite straightforward after `conda` has been configured. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis as it allows for better encapsulation and reproducibility of your experiments.
 
 ```console
-you@master:~ $ conda create -n myenv python=3.9
+you@master:~ $ conda create -n myenv python=3.9 -c conda-forge
 you@master:~ $ conda activate myenv
 (myenv) you@master:~ $ python --version
 Python 3.9.13
