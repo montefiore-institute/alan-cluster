@@ -17,7 +17,7 @@ Table of contents:
 - [General actions](#general-actions)
 - [User account setup](#user-account-setup)
   - [Connecting to Alan](#connecting-to-alan)
-  - [Preparing an Anaconda environment](#preparing-an-anaconda-environment)
+  - [Preparing an conda environment](#preparing-an-conda-environment)
   - [Preparing your (Deep Learning) project](#preparing-your-deep-learning-project)
     - [PyTorch](#pytorch)
     - [Jax](#jax)
@@ -67,18 +67,24 @@ Host alan
 ```
 to `~/.ssh/config`.
 
-### Preparing an Anaconda environment
+### Preparing an conda environment
 
-On your initial login, we will guide you to automatically install an Anaconda environment. **Carefully** read the instructions. If you cancelled the installation procedure, you can still setup Anaconda by executing:
+On your initial login, we will guide you to automatically install a conda environment. **Carefully** read the instructions. If you cancelled the installation procedure, you can still setup conda by executing:
 
 ```console
-you@master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
-you@master:~ $ sh Anaconda3-2022.05-Linux-x86_64.sh
+you@master:~ $ wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh
+you@master:~ $ sh Anaconda3-2023.07-1-Linux-x86_64.sh
+```
+
+Alternatively, for a lightweight drop-in replacement of conda, you can install [micromamba](https://mamba.readthedocs.io/en/latest/user_guide/micromamba.html) by executing
+
+```console
+you@master:~ $ bash <(curl -L micro.mamba.pm/install.sh)
 ```
 
 ### Preparing your (Deep Learning) project
 
-The installation of your Deep Learning environment is quite straightforward after Anaconda has been configured. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis as it allows for better encapsulation and reproducibility of your experiments.
+The installation of your Deep Learning environment is quite straightforward after `conda` has been configured. In general we recommend to work with [environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) on a per-project basis as it allows for better encapsulation and reproducibility of your experiments.
 
 ```console
 you@master:~ $ conda create -n myenv python=3.9
@@ -90,20 +96,19 @@ Python 3.9.13
 #### PyTorch
 
 ```console
-(myenv) you@master:~ $ conda install pytorch torchvision cudatoolkit=11.7 -c pytorch -c conda-forge
+(myenv) you@master:~ $ conda install pytorch torchvision -c pytorch -c nvidia
 ```
 
 #### Jax
 
 ```console
-(myenv) you@master:~ $ conda install cudatoolkit=11.7 cuda-nvcc=11.7 -c conda-forge -c nvidia
-(myenv) you@master:~ $ pip install --upgrade "jax[cuda]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+(myenv) you@master:~ $ pip install --upgrade "jax[cuda11_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
 #### TensorFlow
 
 ```console
-(myenv) you@master:~ $ conda install tensorflow-gpu
+(myenv) you@master:~ $ conda install tensorflow-gpu -c conda-forge
 ```
 
 ### Transferring your datasets to Alan
